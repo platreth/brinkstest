@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+    <div class="d-flex flex-column align-items-center justify-content-center vh-100">
+        <h1>Register</h1>
+        <div class="input-group mb-3 justify-content-center">
+            {{ form_widget(registrationForm.email) }}
+        </div>
+        <div class="input-group mb-3 justify-content-center">
+            {{ form_widget(registrationForm.first_name) }}
+        </div>
+        <div class="input-group mb-3 justify-content-center">
+            {{ form_widget(registrationForm.last_name) }}
+        </div>
+        <div class="input-group mb-3 justify-content-center">
+            {{ form_widget(registrationForm.plainPassword) }}
+        </div>
+        <div class="input-group mb-3 justify-content-center">
+            <div class="input-group-text">
+                {{ form_widget(registrationForm.agreeTerms) }}
+            </div>
+            <div class="input-group-text">
+                <span>{{ form_label(registrationForm.agreeTerms) }}</span>
+            </div>
+        </div>
+        <button type="submit" class="input-group-text">Register</button>
+    </div>
+
+    {{ form_end(registrationForm) }}
+{% endblock %}

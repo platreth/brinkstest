@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomepageController!{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column align-items-center justify-content-center vh-100">
+        {% if user %}
+            <h1>Hello {{ user.firstname }} {{ user.lastname }}</h1>
+            <a href="{{ path('app_logout')}}">Logout</a>
+        {% else %}
+            <a href="{{ path('app_login') }}">Login</a> 
+            <a href="{{ path('app_register') }}">Register</a> 
+        {% endif %}
+    </div>
+{% endblock %}

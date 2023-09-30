@@ -1,0 +1,12 @@
+@import "~bootstrap/scss/bootstrap";
+
+
+body {
+    background-color: rgba(128, 128, 128, 0.692);
+}
+
+.input-group {
+    input {
+        border-radius: .2rem;
+    }
+}
