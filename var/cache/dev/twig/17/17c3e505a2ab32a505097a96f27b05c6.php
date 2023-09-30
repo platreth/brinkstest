@@ -85,21 +85,25 @@ class __TwigTemplate_be9acb0f532939b7957d6f62b5218e0e extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 6
-        echo "    <h1>Reset your password</h1>
+        echo "    <div class=\"d-flex flex-column align-items-center justify-content-center vh-100\">
+        <h1>Reset your password</h1>
 
-    ";
-        // line 8
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["resetForm"]) || array_key_exists("resetForm", $context) ? $context["resetForm"] : (function () { throw new RuntimeError('Variable "resetForm" does not exist.', 8, $this->source); })()), 'form_start');
-        echo "
         ";
         // line 9
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["resetForm"]) || array_key_exists("resetForm", $context) ? $context["resetForm"] : (function () { throw new RuntimeError('Variable "resetForm" does not exist.', 9, $this->source); })()), "plainPassword", [], "any", false, false, false, 9), 'row');
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["resetForm"]) || array_key_exists("resetForm", $context) ? $context["resetForm"] : (function () { throw new RuntimeError('Variable "resetForm" does not exist.', 9, $this->source); })()), 'form_start');
         echo "
-        <button class=\"btn btn-primary\">Reset password</button>
-    ";
+            <div class=\"input-group mb-3 justify-content-center\">
+                ";
         // line 11
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["resetForm"]) || array_key_exists("resetForm", $context) ? $context["resetForm"] : (function () { throw new RuntimeError('Variable "resetForm" does not exist.', 11, $this->source); })()), 'form_end');
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["resetForm"]) || array_key_exists("resetForm", $context) ? $context["resetForm"] : (function () { throw new RuntimeError('Variable "resetForm" does not exist.', 11, $this->source); })()), "plainPassword", [], "any", false, false, false, 11), 'widget');
         echo "
+            </div>
+            <button class=\"input-group-text\">Reset password</button>
+        ";
+        // line 14
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["resetForm"]) || array_key_exists("resetForm", $context) ? $context["resetForm"] : (function () { throw new RuntimeError('Variable "resetForm" does not exist.', 14, $this->source); })()), 'form_end');
+        echo "
+    </div>
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -121,7 +125,7 @@ class __TwigTemplate_be9acb0f532939b7957d6f62b5218e0e extends Template
 
     public function getDebugInfo()
     {
-        return array (  101 => 11,  96 => 9,  92 => 8,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  104 => 14,  98 => 11,  93 => 9,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -131,12 +135,16 @@ class __TwigTemplate_be9acb0f532939b7957d6f62b5218e0e extends Template
 {% block title %}Reset your password{% endblock %}
 
 {% block body %}
-    <h1>Reset your password</h1>
+    <div class=\"d-flex flex-column align-items-center justify-content-center vh-100\">
+        <h1>Reset your password</h1>
 
-    {{ form_start(resetForm) }}
-        {{ form_row(resetForm.plainPassword) }}
-        <button class=\"btn btn-primary\">Reset password</button>
-    {{ form_end(resetForm) }}
+        {{ form_start(resetForm) }}
+            <div class=\"input-group mb-3 justify-content-center\">
+                {{ form_widget(resetForm.plainPassword) }}
+            </div>
+            <button class=\"input-group-text\">Reset password</button>
+        {{ form_end(resetForm) }}
+    </div>
 {% endblock %}
 ", "reset_password/reset.html.twig", "/home/hp/dev/brink/project/templates/reset_password/reset.html.twig");
     }
