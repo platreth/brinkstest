@@ -3,9 +3,6 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-
-    {{ form_errors(registrationForm) }}
-
     {{ form_start(registrationForm) }}
     <div class="d-flex flex-column align-items-center justify-content-center vh-100">
         <h1>Register</h1>
@@ -29,6 +26,8 @@
                 <span>{{ form_label(registrationForm.agreeTerms) }}</span>
             </div>
         </div>
+        {{ form_errors(registrationForm.plainPassword) }}
+        {{ form_errors(registrationForm.email) }}
         <button type="submit" class="input-group-text">Register</button>
     </div>
 

@@ -2,6 +2,9 @@
 
 namespace App\Security;
 
+use App\Entity\User;
+use DateTimeImmutable;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +25,7 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
 
     public const LOGIN_ROUTE = 'app_login';
 
-    public function __construct(private UrlGeneratorInterface $urlGenerator)
+    public function __construct(private UrlGeneratorInterface $urlGenerator, private EntityManagerInterface $entityManager)
     {
     }
 
@@ -45,6 +48,18 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        /** @var string $email */
+        $email = $request->get('email');
+
+        /** @var User $user */
+        $user = $this->entityManager->getRepository(User::class)->findoneBy(['email' => $email]);
+
+        if ($user) {
+            $user->setLastLoginAt(new DateTimeImmutable());
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+        }
+
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
